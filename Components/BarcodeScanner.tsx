@@ -1,15 +1,21 @@
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { BarCodeEvent, BarCodeScanner } from "expo-barcode-scanner";
 import { useEffect, useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Pressable } from "react-native";
+import { NavigationProps } from "./Screens";
+import { Person } from "../Model/Person";
 
 export const AppBarcodeScanner = () => {
     const [hasPermission, setHasPermission] = useState(false);
     const [scanned, setScanned] = useState(false);
+    const navigation = useNavigation<NavigationProps>();
+    const isFocused = useIsFocused();
 
     const handleBarCodeScanned = (event:BarCodeEvent) => {
-        setScanned(true);
         const text = event.data;
-        alert(text);
+        let message = JSON.parse(text);
+        alert(message);
+        navigation.navigate("Details", {contactId:message.id})
     }
     useEffect(() => {
         const getPermissions = async () => {
@@ -29,7 +35,7 @@ export const AppBarcodeScanner = () => {
 
     return (
         <View style={styles.container}>
-            <BarCodeScanner
+            {isFocused && <BarCodeScanner
                 type="back"
                 barCodeTypes={[
                             BarCodeScanner.Constants.BarCodeType.qr,
@@ -37,6 +43,7 @@ export const AppBarcodeScanner = () => {
                             ]}
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={StyleSheet.absoluteFillObject} />
+            }
         </View>
     );
 }

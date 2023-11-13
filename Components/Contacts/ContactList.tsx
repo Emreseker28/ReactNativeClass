@@ -8,7 +8,7 @@ import { Context } from "../Data/Context";
 export const ContactListItem = ({contact} : {contact:Person}) => {
     const navigation = useNavigation<NavigationProps>();
     return (<View style={contactListItemStyles.item}>
-        <Pressable onPress={()=>navigation.navigate("Details", {contact:contact})}>
+        <Pressable onPress={()=>navigation.navigate("Details", {contactId:contact.id})}>
             <Text>{contact.firstName} {contact.lastName}</Text>
         </Pressable>
     </View>)

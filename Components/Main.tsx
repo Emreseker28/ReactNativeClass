@@ -8,6 +8,7 @@ import { Person, createContact } from "../Model/Person";
 import { useState } from "react";
 import { Context } from "./Data/Context";
 import { AppBarcodeScanner } from "./BarcodeScanner";
+import { FaceDetector } from "./FaceDetector";
 
 
 
@@ -36,8 +37,9 @@ export const Main = () => {
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="ContactList" component={ContactList} />
                 <Stack.Screen name="Details" component={ContactDetails} />
-                <Stack.Screen name='CreateContact' component={CreateContact} />
+                <Stack.Screen name="CreateContact" component={CreateContact} />
                 <Stack.Screen name="BarcodeScanner" component={AppBarcodeScanner}/>
+                <Stack.Screen name="FaceDetector" component={FaceDetector}/>
             </Stack.Navigator>
         </NavigationContainer>
         </Context.Provider>

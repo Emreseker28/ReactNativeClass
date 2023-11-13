@@ -4,9 +4,10 @@ import { Person } from "../Model/Person";
 export type ScreensList = {
     Home: undefined,
     ContactList: undefined,
-    Details: {contact:Person},
+    Details: {contactId:string},
     CreateContact: undefined,
-    BarcodeScanner: undefined
+    BarcodeScanner: undefined,
+    FaceDetector: undefined
 }
 
 export type NavigationProps = StackNavigationProp<ScreensList>;
