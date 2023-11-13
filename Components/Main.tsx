@@ -7,6 +7,8 @@ import { CreateContact } from "./Contacts/CreateContact";
 import { Person, createContact } from "../Model/Person";
 import { useState } from "react";
 import { Context } from "./Data/Context";
+import { AppBarcodeScanner } from "./BarcodeScanner";
+
 
 
 const Stack = createStackNavigator();
@@ -35,6 +37,7 @@ export const Main = () => {
                 <Stack.Screen name="ContactList" component={ContactList} />
                 <Stack.Screen name="Details" component={ContactDetails} />
                 <Stack.Screen name='CreateContact' component={CreateContact} />
+                <Stack.Screen name="BarcodeScanner" component={AppBarcodeScanner}/>
             </Stack.Navigator>
         </NavigationContainer>
         </Context.Provider>

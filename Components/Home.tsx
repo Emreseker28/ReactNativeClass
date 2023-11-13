@@ -8,6 +8,7 @@ export const Home = () => {
         <View>
             <Button title="Contacts" onPress={()=>navigation.navigate("ContactList")}></Button>
             <Button title="Create Contact" onPress={()=>navigation.navigate("CreateContact")}></Button>
+            <Button title="Barcode Scanner" onPress={()=>navigation.navigate("BarcodeScanner")}></Button>
         </View>
     )
 }

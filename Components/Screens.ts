@@ -5,7 +5,8 @@ export type ScreensList = {
     Home: undefined,
     ContactList: undefined,
     Details: {contact:Person},
-    CreateContact: undefined
+    CreateContact: undefined,
+    BarcodeScanner: undefined
 }
 
 export type NavigationProps = StackNavigationProp<ScreensList>;
