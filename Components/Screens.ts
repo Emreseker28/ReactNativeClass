@@ -7,7 +7,7 @@ export type ScreensList = {
     Details: {contactId:string},
     CreateContact: undefined,
     BarcodeScanner: undefined,
-    FaceDetector: undefined
+    FaceDetector: {contactID:string}
 }
 
 export type NavigationProps = StackNavigationProp<ScreensList>;

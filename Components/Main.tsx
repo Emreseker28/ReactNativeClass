@@ -30,8 +30,13 @@ export const Main = () => {
         setState(state.filter(contact => contact.id != contactToDelete.id));
     }
 
+    const setPhotoInContact = (contactId:string, photo:string) => {
+        //if condition is the same, update photo. If not, return the same contact details.
+        setState(state.map(contact => contact.id === contactId ? {...contact, image:photo} : contact))
+    }
+
     return (
-        <Context.Provider value={{contacts:state, onCreate, onDelete}}>
+        <Context.Provider value={{contacts:state, onCreate, onDelete, setPhoto:setPhotoInContact}}>
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Home" component={Home} />
