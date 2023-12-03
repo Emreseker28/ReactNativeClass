@@ -1,4 +1,4 @@
-import { Button, Text, View } from "react-native";
+import { Button, Pressable, Text, View, StyleSheet } from "react-native";
 import { Person } from "../../Model/Person";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NavigationProps, ScreensList } from "../Screens";
@@ -28,7 +28,43 @@ export const ContactDetails = () => {
             </View>
             <View>
                 <Button title="Face Detector" onPress={()=>navigation.navigate("FaceDetector", {contactID:route.params.contactId})}></Button>
+                <Pressable onLongPress={()=>onDeleteContact()}
+                style={({pressed}) => {
+                    return [
+                        {
+                            backgroundColor: pressed ? 'rgb(150, 180, 255)' : 'red',
+                        },
+                        styles.wrapperCustom,
+                    ];
+                }}>
+                {({pressed}) => (
+                    <Text style={styles.text}>{pressed ? 'Hold For Confirmation' : 'Delete Contract'}</Text>
+                 )}
+                </Pressable>
             </View>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      padding: 10
+    },
+    text: {
+      fontSize: 16,
+      alignSelf:"center",
+      color: 'white'
+    },
+    wrapperCustom: {
+      padding: 6,
+    },
+    logBox: {
+      padding: 20,
+      margin: 10,
+      borderWidth: StyleSheet.hairlineWidth,
+      borderColor: '#f0f0f0',
+      backgroundColor: '#f9f9f9',
+    },
+  });
